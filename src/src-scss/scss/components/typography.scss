@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'exo';
+  src: url('../../../public/fonts/exo-thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+.h1 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 100;
+  font-family: 'exo';
+  line-height: 44px;
+  text-align: center;
+
+  @include for-phone-up {
+    margin-bottom: 35px;
+  }
+
+  @include for-desktop-up {
+    margin-bottom: 25px;
+  }
+}
+
+.highlight {
+  color: $wave;
+}

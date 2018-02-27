@@ -1,0 +1,30 @@
+.circle {
+  @include makeCircle(80px,80px,$wave);
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  &__value, &__measure {
+    width: 100%;
+    flex-shrink: 0;
+
+    text-align: center;
+    color: #fff;
+    line-height: normal;
+  }
+
+  &__value {
+    font-size: 42px;
+    line-height: 42px;
+  }
+
+  &__measure {
+    font-size: 21px;
+    line-height: 22px;
+  }
+}

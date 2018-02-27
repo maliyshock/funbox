@@ -1,0 +1,8 @@
+node_modules
+.idea
+.npmrc
+npm-debug.log
+.DS_Store
+
+dist/bundle.js
+task

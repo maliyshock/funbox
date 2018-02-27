@@ -1,0 +1,12 @@
+.feed-cats-section {
+  width: 100%;
+
+  @include for-phone-up {
+    padding-top: 50px;
+  }
+
+  @include for-desktop-up {
+    padding-top: 0;
+    padding-bottom: 25px;
+  }
+}
