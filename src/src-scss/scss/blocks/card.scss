@@ -5,6 +5,7 @@
 
   max-width: 320px;
   width: 100%;
+  min-height: 515px;
 
   position: relative;
 
@@ -15,7 +16,10 @@
 
     &:checked {
       & + #{$c}__inner {
-        background-color: $rose;
+
+        #{$c}__body,#{$c}__footer,#{$c}__header, #{$c}__face:before {
+          border-color: $rose;
+        }
 
        #{$c}__weight {
          background-color: $rose;
@@ -41,13 +45,17 @@
 
     &:disabled {
       & + #{$c}__inner {
-        background-color: $beton;
+
+        #{$c}__body,#{$c}__footer,#{$c}__header, #{$c}__face:before {
+          border-color: $beton;
+          background-color: $snow;
+        }
 
         #{$c}__weight {
           background-color: $beton;
         }
 
-        #{$c}__img, #{$c}__header, #{$c}__body {
+        #{$c}__img, #{$c}__header > *, #{$c}__body > * {
           opacity: .5;
         }
       }
@@ -65,17 +73,12 @@
   &__inner {
     @include makeColumn;
     flex-shrink: 0;
+    position: relative;
 
     max-width: 320px;
     width: 100%;
 
-    padding: 4px;
-
     border-radius: 12px;
-
-    background-color: $wave;
-
-    clip-path: polygon(43px 0%, 100% 0%, 1000% 100%, 0% 100%, 0 43px);
 
     transition: background-color $quick-transition-time
   }
@@ -90,29 +93,80 @@
 
     border-radius: 8px;
 
-    background-color: #fff;
-
     cursor: pointer;
 
-    clip-path: polygon(41px 0%, 100% 0%, 1000% 100%, 0% 100%, 0 41px);
+
+    &:before {
+      @include pseudo-elem;
+      z-index: 0;
+      left: -2px;
+      bottom: calc(100% - 45px);
+
+      width: 45px;
+      height: 66px;
+
+      background-color: #fff;
+
+      border-left: 4px solid $wave;
+
+      transform: rotate(47deg);
+      transform-origin: 0 100%;
+    }
   }
 
   &__header, &__body  {
+    display: block;
+  }
+
+  &__header, &__body  {
+    position: relative;
+    z-index: 1;
+
+    background-color: #fff;
+  }
+
+  &__header {
+    flex-grow: 0;
+    min-height: 45px;
+
+    margin-left: 47px;
+
+    border-top: 4px solid $wave;
+    border-right: 4px solid $wave;
+    border-top-right-radius: 10px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+    overflow: hidden;
+
+    border-left: 4px solid $wave;
+    border-right: 4px solid $wave;
+    border-bottom: 4px solid $wave;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  &__title-area {
+    margin-top: -25px;
+  }
+
+  &__title-area, &__text-area {
     display: block;
 
     padding-left: 47px;
     padding-right: 47px;
   }
 
-  &__header {
-    flex-grow: 0;
-
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  &__body {
+  &__text-area {
     flex-grow: 1;
+
+    padding-top: 15px;
   }
 
   &__title {
@@ -166,7 +220,7 @@
     width: 100%;
     height: 100%;
 
-    padding: 20px 51px;
+    padding: 17px 51px;
 
     color: $rose;
 
@@ -185,8 +239,7 @@
 
   &__footer {
     display: block;
-
-    padding-top: 16px;
+    width: 100%;
   }
 
   &__img-container {
@@ -195,7 +248,6 @@
     display: block;
     height: 270px;
     width: 100%;
-    overflow: hidden;
   }
 
   &__img {
